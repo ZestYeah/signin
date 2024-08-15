@@ -1,378 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authentication</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: rgb(0 10 30);
-    }
-    .box {
-      position: relative;
-      width: 380px;
-      height: 450px;
-      background: #1c1c1c;
-      border-radius: 7px;
-      overflow: hidden;
-      margin: auto;
-    }
-    .box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 380px;
-      height: 450px;
-      background: linear-gradient(0deg, transparent, #ff0000, #29bdff);
-      transform-origin: bottom right;
-      animation: animate 6s linear infinite;
-    }
-    .box::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 380px;
-      height: 420px;
-      background: linear-gradient(0deg, transparent, #25ccff, #45f9ff);
-      transform-origin: bottom right;
-      animation: animate 6s linear infinite;
-      animation-delay: -3s;
-    }
-    @keyframes animate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    .form {
-      position: absolute;
-      inset: 4px;
-      background: #28292d;
-      z-index: 10;
-      border-radius: 8px;
-      padding: 10px 40px;
-      display: flex;
-      flex-direction: column;
-    }
-    .form h2 {
-      color: #45f3ff;
-      text-align: center;
-      letter-spacing: 0.1em;
-      font-weight: 800;
-      font-family: sans-serif;
-      text-decoration: underline;
-    }
-    .inputbox {
-      position: relative;
-      width:300px;
-      margin-top: 35px;
-    }
-   .inputbox input {
-      position: relative;
-      width: 100%;
-      padding: 20px 10px 10px;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: black;
-      font-weight: 900;
-      font-size: 1em;
-      letter-spacing: 0.05em;
-      z-index: 10;
-    }
-   .inputbox span {
-      position: absolute;
-      left: 0;
-      padding: 10px 0px 10px;
-      top: 0px;
-      font-size: 1em;
-      color: white;
-      pointer-events: none;
-      letter-spacing: 0.05em;
-      transition: 0.5s;
-    }
-   .inputbox input:valid ~ span,
-   .inputbox input:focus ~ span {
-      color: red;
-      transform: translateX(-0px) translateY(-34px);
-      font-size: 1.1em;
-    }
-   .inputbox i {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background: #45f3ff;
-      border-radius: 4px;
-      transition: 0.5s;
-      pointer-events: none;
-      z-index: 9;
-    }
-   .inputbox input:valid ~ i,
-   .inputbox input:focus ~ i {
-      height: 44px;
-    }
-   .links {
-      display: flex;
-      justify-content: space-between;
-    }
-   .links a {
-      margin: 10px 0;
-      font-size: 0.75em;
-      color: red;
-      text-decoration: none;
-    }
-  .links a:hover,
-  .links a:nth-child(2) {
-      color: #45f3ff;
-    }
-    input[type="a"] {
-      border: 4px solid #45f3ff;
-      outline: none;
-      background: transparent;
-      padding: 11px 25px 11px 25px;
-      width: 100px;
-      margin-top: 10px;
-      border-radius: 9px;
-      font-weight: 900;
-      cursor: pointer;
-      margin-left: 90px;
-      color: red;
-    }
-    input[type="a"]:active {
-      opacity: 0.8;
-    }
-    input[type="a"]:hover {
-      border-color: #ff0000;
-    }
-    
-       .ass {
-      display: flex;
-      justify-content: space-between;
-    }
-   .ass a{
-      margin: 10px 0;
-      font-size: 0.75em;
-      color: #08ff00;
-      text-decoration: none;
-    }
-  .ass a:hover,
-  .ass a:nth-child(2) {
-      color: #7f45ff;
-    }
-  </style>
+    <title>Icon Buttons</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' />
+    <script src="https://kit.fontawesome.com/7470ded367.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.16/auth0.min.js"></script>
 </head>
 <body>
-  <div class="box">
-    <div class="form">
-      <h2 id="form-title">Sign In</h2>
-      <form id="auth-form">
-        <div class="inputbox">
-          <input type="email" id="user-email" required="required">
-          <span>Email</span>
-          <i></i>
+    <div id="container">
+        <p>Freezia Solutions</p>
+        <div class="contain">
+            <h1 class="main-header">Welcome</h1>
+            <h2 class="subheader">We Thank you for choosing us, please choose a platform for login</h2>
+            <div class="tainer">
+                <button class="discord-btn">
+                    <i class="fa-brands fa-discord"></i>
+                </button>
+                <button class="gmail-btn">
+                    <i class="fa-brands fa-google"></i>
+                </button>
+            </div>
         </div>
-        <div class="inputbox">
-          <input type="password" id="user-password" required="required">
-          <span>Password</span>
-          <i></i>
-        </div>
-        <input type="a" value="Login" id="auth-button">
-      </form>
-      <div class="ass">
-      <a href="#" onclick="googleSignIn()">Sign in with Google</a>
-      <a href="#" onclick="facebookSignIn()">Sign in with Facebook</a>
-      </div>
-      <div class="links">
-        <a href="#" id="toggle-auth" onclick="toggleAuthMode()">Don't have an account? Sign Up</a>
-        <a href="#" onclick="resetPassword()">Forgot Password?</a>
-      </div>
     </div>
-  </div>
 
-  <!-- Firebase App (the core Firebase SDK) -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script>
+        const auth0 = new Auth0({
+            domain: 'dev-3fxw3k04xko1x284.us.auth0.com',
+            clientID: 'dguG7wvVF9RDfyHWNn04b2yVyYxxO8iZ',
+        });
 
-  <!-- Firebase Auth -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-
-  <!-- Firebase Firestore -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-
-  <!-- Firebase Storage -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
-
-  <!-- Your web app's Firebase configuration -->
-  <script>
-    // Fetch the Firebase config file from Dropbox
-    fetch('https://dl.dropbox.com/scl/fi/curhf2t73bzf6tma89bnf/data.js?rlkey=9lmkq1t8rbibausbvzbhb4qlf&raw=1')
-      .then(response => response.text())
-      .then(data => {
-        eval(data);
-        // Initialize Firebase with the fetched config
-        const app = firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        
-        // Now you can use Firebase services
-
-        // Add event listener for form submission
-        document.getElementById('auth-form').addEventListener('submit', authenticateUser);
-
-        function toggleAuthMode() {
-          isLoginMode = isLoginMode == 'Log In' ? 'Sign Up' : 'Log In';
-
-          document.getElementById('form-title').innerText = isLoginMode;
-          document.getElementById('auth-button').value = isLoginMode;
-
-          document.getElementById('toggle-auth').innerHTML = isLoginMode == 'Log In'
-            ? "Don't have an account? <a onclick='toggleAuthMode()'>Sign Up</a>"
-            : "Already have an account? <a onclick='toggleAuthMode()'>Log In</a>";
-
-          clearErrors();
-        }
-
-        function clearErrors() {
-          document.getElementById('email-error').innerText = '';
-          document.getElementById('password-error').innerText = '';
-        }
-
-        function authenticateUser(event) {
-          event.preventDefault();
-          const email = document.getElementById('user-email').value;
-          const password = document.getElementById('user-password').value;
-
-          if (!validateEmail(email)) {
-            document.getElementById('email-error').innerText = 'Invalid email address';
-            return;
-          }
-
-          if (!validatePassword(password)) {
-            document.getElementById('password-error').innerText = 'Password must be at least 8 characters long';
-            return;
-          }
-
-          if (isLoginMode == 'Log In') {
-            login(email, password);
-          } else {
-            signup(email, password);
-          }
-        }
-
-        function validateEmail(email) {
-          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          return emailRegex.test(email);
-        }
-
-        function validatePassword(password) {
-          return password.length >= 8;
-        }
-
-        function signup(email, password) {
-          auth.createUserWithEmailAndPassword(email, password)
-            .then(userCredential => {
-              const user = userCredential.user;
-              const userProfile = {
-                uid: user.uid,
-                email: user.email,
-                profilePicture: '',
-                content: []
-              };
-              return db.collection('users').doc(user.uid).set(userProfile);
-            })
-            .then(() => {
-              console.log('User signed up and profile created');
-              resetFormFields();
-              sendVerificationEmail();
-            })
-            .catch(error => {
-              console.error('Error during sign up:', error);
-              alert(error.message);
+        document.querySelector('.gmail-btn').addEventListener('click', function() {
+            auth0.authorize({
+                connection: 'google-oauth2'
             });
-        }
+        });
 
-        function login(email, password) {
-          auth.signInWithEmailAndPassword(email, password)
-            .then(userCredential => {
-              console.log('User logged in:', userCredential.user);
-              resetFormFields();
-            })
-            .catch(error => {
-              console.error('Error during login:', error);
-              alert(error.message);
+        document.querySelector('.discord-btn').addEventListener('click', function() {
+            auth0.authorize({
+                connection: 'discord' // Implement Discord login
             });
+        });
+    </script>
+
+    <style>
+        /* Your existing CSS styles remain unchanged */
+        #container {
+            width: auto;
+            margin: auto;
         }
 
-        function resetFormFields() {
-          document.getElementById('user-email').value = '';
-          document.getElementById('user-password').value = '';
-          clearErrors();
+        #container p {
+            text-align: center;
+            font-size: 3em;
+            margin: 20px 0 20px 0;
+            font-family: 'Pacifico';
+            color: #6a7daa; 
+            transition: all 0.5s;
         }
 
-        function sendVerificationEmail() {
-          auth.currentUser.sendEmailVerification()
-            .then(() => {
-              alert('Verification email sent!');
-            })
-            .catch(error => {
-              console.error('Error sending verification email:', error);
-            });
+        #container p:hover {
+            animation: neon1 1.5s ease-in-out infinite alternate;
         }
 
-        function resetPassword() {
-          const email = prompt('Please enter your email address:');
-          if (email) {
-            auth.sendPasswordResetEmail(email)
-              .then(() => {
-                alert('Password reset email sent!');
-              })
-              .catch(error => {
-                console.error('Error sending password reset email:', error);
-                alert(error.message);
-              });
-          }
+        @keyframes neon1 {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6a7daa, 0 0 70px #6a7daa, 0 0 80px #6a7daa, 0 0 100px #6a7daa, 0 0 150px #6a7daa;
+            }
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #6a7daa, 0 0 35px #6a7daa, 0 0 40px #6a7daa, 0 0 50px #6a7daa, 0 0 75px #6a7daa;
+            }
         }
 
-        function googleSignIn() {
-          const provider = new firebase.auth.GoogleAuthProvider();
-          auth.signInWithPopup(provider)
-            .then(result => {
-              console.log('User signed in with Google:', result.user);
-            })
-            .catch(error => {
-              console.error('Error during Google sign-in:', error);
-              alert(error.message);
-            });
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin-top: 100px;
         }
 
-        function facebookSignIn() {
-          var provider = new firebase.auth.FacebookAuthProvider();
-
-          firebase.auth().signInWithPopup(provider)
-            .then((result) => {
-              var token = result.credential.accessToken;
-              var user = result.user;
-
-              console.log('User signed in with Facebook:', user);
-            })
-            .catch((error) => {
-              console.error('Error during Facebook sign-in:', error);
-              alert(error.message);
-            });
+        .tainer {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
         }
-      })
-      .catch(error => {
-        console.error('Error fetching Firebase config:', error);
-      });
-  </script>
+
+        .discord-btn {
+            background-color: #7289DA;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .discord-btn:hover {
+            background-color: #6a7daa;
+        }
+
+        .gmail-btn {
+            background-color: #DB4437;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .gmail-btn:hover {
+            background-color: #b33939;
+        }
+
+        .fab, .fas {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .contain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+        }
+
+        .main-header {
+            font-size: 36px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .subheader {
+            font-size: 24px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+    </style>
 </body>
 </html>
