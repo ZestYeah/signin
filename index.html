@@ -25,22 +25,27 @@
     </div>
 
     <script>
-        const auth0 = new Auth0({
-            domain: 'dev-3fxw3k04xko1x284.us.auth0.com',
-            clientID: 'dguG7wvVF9RDfyHWNn04b2yVyYxxO8iZ',
-        });
+const auth0 = new Auth0({
+    domain: 'dev-3fxw3k04xko1x284.us.auth0.com',
+    clientID: 'dguG7wvVF9RDfyHWNn04b2yVyYxxO8iZ',
+});
 
-        document.querySelector('.gmail-btn').addEventListener('click', function() {
-            auth0.authorize({
-                connection: 'google-oauth2'
-            });
-        });
+document.querySelector('.gmail-btn').addEventListener('click', function() {
+    auth0.authorize({
+        connection: 'google-oauth2'
+    }).catch(function(error) {
+        console.error('Login failed:', error);
+    });
+});
 
-        document.querySelector('.facebook-btn').addEventListener('click', function() {
-            auth0.authorize({
-                connection: 'facebook-oauth2'
-            });
-        });
+document.querySelector('.facebook-btn').addEventListener('click', function() {
+    auth0.authorize({
+        connection: 'facebook-oauth2'
+    }).catch(function(error) {
+        console.error('Login failed:', error);
+    });
+});
+
     </script>
 
     <style>
