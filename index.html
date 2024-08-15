@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Freezia Login</title>
+    <title>Icon Buttons</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' />
     <script src="https://kit.fontawesome.com/7470ded367.js"></script>
@@ -14,8 +14,8 @@
             <h1 class="main-header">Welcome</h1>
             <h2 class="subheader">We Thank you for choosing us, please choose a platform for login</h2>
             <div class="tainer">
-                <button class="discord-btn">
-                    <i class="fa-brands fa-discord"></i>
+                <button class="facebook-btn">
+                    <i class="fa-brands fa-facebook"></i>
                 </button>
                 <button class="gmail-btn">
                     <i class="fa-brands fa-google"></i>
@@ -36,15 +36,14 @@
             });
         });
 
-        document.querySelector('.discord-btn').addEventListener('click', function() {
+        document.querySelector('.facebook-btn').addEventListener('click', function() {
             auth0.authorize({
-                connection: 'discord' // Implement Discord login
+                connection: 'facebook-oauth2'
             });
         });
     </script>
 
     <style>
-        /* Your existing CSS styles remain unchanged */
         #container {
             width: auto;
             margin: auto;
@@ -88,8 +87,8 @@
             width: 200px;
         }
 
-        .discord-btn {
-            background-color: #7289DA;
+        .facebook-btn {
+            background-color:blue;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
@@ -97,7 +96,7 @@
             cursor: pointer;
         }
 
-        .discord-btn:hover {
+        .facebook-btn:hover {
             background-color: #6a7daa;
         }
 
