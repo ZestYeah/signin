@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Freezia Login</title>
-    <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' />
     <script src="https://kit.fontawesome.com/7470ded367.js"></script>
     <script src="https://cdn.auth0.com/js/auth0/9.16/auth0.min.js"></script>
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const auth0 = new auth0.WebAuth({
         domain: 'dev-3fxw3k04xko1x284.us.auth0.com',
         clientID: 'dguG7wvVF9RDfyHWNn04b2yVyYxxO8iZ',
-        redirectUri: 'https://nourhenerebai.tn/signin', // Ensure this matches your callback URL
+        redirectUrl: 'https://nourhenerebai.tn/signin',
         responseType: 'token',
         scope: 'openid profile email'
     });
@@ -46,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
     </script>
 
     <style>
